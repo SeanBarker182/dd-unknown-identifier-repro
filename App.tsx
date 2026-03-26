@@ -1,16 +1,26 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text, View, TextInput as RNTextInput } from "react-native";
 
-function MyButton({ children, onPress }: any) {
-  return <Pressable onPress={onPress}>{children}</Pressable>;
+function TextInput({
+  label,
+  onPress,
+}: {
+  label: string;
+  onPress?: () => void;
+}) {
+  return (
+    <Pressable onPress={onPress}>
+      <Text>{label}</Text>
+      <RNTextInput
+        style={{ borderWidth: 1, borderColor: "black", width: 100 }}
+      />
+    </Pressable>
+  );
 }
-MyButton.Label = ({ children }: any) => <Text>{children}</Text>;
 
 export default function App() {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <MyButton onPress={() => {}}>
-        <MyButton.Label>Hello</MyButton.Label>
-      </MyButton>
+      <TextInput label="Hello" />
     </View>
   );
 }
